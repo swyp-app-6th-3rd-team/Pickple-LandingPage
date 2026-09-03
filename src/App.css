@@ -1,0 +1,39 @@
+.page-shell { width: min(100%, 1180px); margin: 0 auto; overflow: hidden; background: #f7f7f4; }
+.site-header { display: flex; justify-content: space-between; align-items: center; padding: 22px clamp(22px, 5vw, 72px); color: #1c1c1a; }
+.brand { color: inherit; font-size: 15px; font-weight: 800; letter-spacing: -0.04em; text-decoration: none; }
+.header-note { color: #a3a39b; font-size: 10px; }
+.intro { padding: clamp(70px, 13vw, 160px) 22px clamp(70px, 10vw, 120px); text-align: center; }
+.eyebrow { margin: 0 0 18px; color: #8b8b83; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; }
+h1, h2, p { margin-top: 0; }
+h1, h2 { color: #171715; font-weight: 700; letter-spacing: -0.07em; line-height: 1.22; }
+h1 { margin-bottom: 22px; font-size: clamp(30px, 5vw, 64px); }
+h2 { margin-bottom: 20px; font-size: clamp(25px, 4vw, 48px); }
+.intro-copy, .story-section > p, .signup-heading > p:last-child { color: #777770; font-size: 13px; line-height: 1.75; }
+.visual-section { position: relative; display: grid; grid-template-columns: 1.45fr 1fr; gap: 3px; min-height: clamp(330px, 52vw, 620px); background: #f7f7f4; }
+.visual-card { position: relative; overflow: hidden; background: #989894; }
+.visual-card-main { background: linear-gradient(145deg, #b7b7b1 0%, #797a77 60%, #585a57 100%); }
+.visual-card-main::after { position: absolute; right: 12%; bottom: 0; width: 35%; height: 65%; border-radius: 140px 140px 0 0; background: rgba(236, 235, 224, 0.32); content: ''; }
+.visual-card-side { display: flex; flex-direction: column; justify-content: space-between; padding: 24px; background: #747570; color: #f5f5ef; }
+.visual-card-side span, .visual-label { font-size: 10px; letter-spacing: 0.12em; }
+.visual-card-side strong { position: relative; z-index: 1; font-size: clamp(18px, 3vw, 32px); letter-spacing: -0.06em; line-height: 1.25; }
+.visual-label { position: absolute; z-index: 1; top: 24px; left: 24px; color: #f5f5ef; }
+.visual-lines { position: absolute; right: 12%; bottom: 18%; left: 12%; display: grid; gap: 8px; }
+.visual-lines span { display: block; width: 45%; height: 2px; background: rgba(255, 255, 255, 0.55); }
+.visual-lines span:nth-child(2) { width: 65%; }
+.visual-lines span:nth-child(3) { width: 35%; }
+.scroll-cue { position: absolute; bottom: 18px; left: 50%; z-index: 2; color: #fff; font-size: 26px; line-height: 1; transform: translateX(-50%); }
+.story-section { padding: clamp(85px, 13vw, 170px) 22px; text-align: center; background: #f7f7f4; }
+.signup-section { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(35px, 8vw, 120px); padding: clamp(55px, 9vw, 110px) clamp(22px, 9vw, 120px); color: #f7f7f4; background: #171d28; }
+.signup-section h2, .signup-section .eyebrow { color: inherit; }
+.signup-heading > p:last-child { color: #a9afb9; }
+.signup-form { align-self: center; display: grid; gap: 10px; }
+.signup-form label:not(.consent) { color: #a9afb9; font-size: 11px; }
+.signup-form input[type='email'] { width: 100%; box-sizing: border-box; border: 1px solid #3d4655; border-radius: 2px; padding: 15px; color: #fff; background: #242d3a; font: inherit; font-size: 13px; }
+.signup-form input[type='email']:focus-visible { outline: 2px solid #e7c16e; outline-offset: 2px; }
+.consent { display: flex; align-items: center; gap: 8px; color: #a9afb9; font-size: 11px; }
+.signup-form button { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; border: 0; border-radius: 2px; padding: 15px; color: #171d28; background: #e7c16e; cursor: pointer; font: inherit; font-size: 13px; font-weight: 700; }
+.signup-form button:hover { background: #f1d38b; }
+.success-message { color: #e7c16e; font-size: 12px; }
+.site-footer { display: flex; justify-content: space-between; padding: 22px clamp(22px, 5vw, 72px); color: #858980; background: #10151e; font-size: 10px; }
+@media (max-width: 640px) { .visual-section { min-height: 340px; } .visual-card-side { padding: 16px; } .visual-label { top: 16px; left: 16px; } .signup-section { grid-template-columns: 1fr; gap: 35px; } }
+@media (min-width: 900px) { .site-header { padding-top: 30px; padding-bottom: 30px; } .visual-section { margin: 0 clamp(22px, 5vw, 72px); } }
