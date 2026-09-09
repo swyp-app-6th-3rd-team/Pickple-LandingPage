@@ -1,6 +1,6 @@
 :root {
   --lime: var(--color-yellow-60);
-  --pale-lime: #f3f9e8;
+  --pale-lime: var(--color-neutral-5);
   --ink: var(--color-blue-60);
   --muted: #777d77;
 }
@@ -360,3 +360,55 @@ h1 {
 @media (min-width: 700px) {
   body { background: #fff; }
 }
+
+/* Design-system application */
+.page-shell,
+.signup-section,
+.site-footer { background: var(--color-neutral-5); }
+
+.site-header,
+.hero { background: #f3f9e8; }
+
+.brand,
+h1,
+h2,
+.sparkle,
+.mascot,
+.footer-brand { color: var(--color-blue-60); }
+
+.header-button,
+.signup-form button { color: var(--color-neutral-5); background: var(--color-blue-60); }
+
+.pill,
+.lime-heading,
+.cta { color: var(--color-neutral-5); background: var(--color-yellow-60); }
+
+h1,
+h2,
+.feature-item h3,
+.cta h2,
+.signup-section h2 {
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--line-height-heading);
+}
+
+h1 { font-size: var(--font-size-heading-01); }
+h2 { font-size: var(--font-size-heading-02); }
+.hero-copy,
+.signup-heading p,
+.cta p { font-size: var(--font-size-body-02); line-height: var(--line-height-body); }
+.feature-index,
+.pill,
+.header-button,
+.lime-heading,
+.signup-form button { font-weight: var(--font-weight-bold); }
+.feature-item h3 { font-size: var(--font-size-title-02); }
+.feature-item p { color: var(--color-neutral-40); font-size: var(--font-size-caption); line-height: var(--line-height-caption); }
+.chat span { color: var(--color-neutral-80); background: var(--color-neutral-10); font-size: var(--font-size-caption); }
+.signup-heading p,
+.consent { color: var(--color-neutral-60); }
+.signup-form input[type='email'] { color: var(--color-blue-60); border-color: var(--color-neutral-20); }
+.consent,
+.success-message,
+.site-footer { font-size: var(--font-size-caption); }
