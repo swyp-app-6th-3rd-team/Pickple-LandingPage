@@ -1,8 +1,8 @@
 function SiteFooter() {
   return (
     <footer className="site-footer">
-      <span>Pickpick</span>
-      <span>© 2026 Pickpick</span>
+      <span className="footer-brand">PickPle</span>
+      <span>© 2026 PickPle. All rights reserved.</span>
     </footer>
   )
 }
