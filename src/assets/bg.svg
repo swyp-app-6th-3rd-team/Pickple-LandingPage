@@ -1,0 +1,22 @@
+<svg width="1440" height="890" viewBox="0 0 1440 890" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_2903_89447)">
+<rect width="1440" height="890" fill="#111827" style="fill:#111827;fill:color(display-p3 0.0667 0.0941 0.1529);fill-opacity:1;"/>
+<ellipse cx="1343.61" cy="1013.1" rx="1016.35" ry="399.246" transform="rotate(-11.8285 1343.61 1013.1)" fill="#181D2D" style="fill:#181D2D;fill:color(display-p3 0.0941 0.1137 0.1765);fill-opacity:1;"/>
+<ellipse cx="1424.11" cy="-117.358" rx="644.153" ry="399.246" transform="rotate(4.60199 1424.11 -117.358)" fill="#181D2D" style="fill:#181D2D;fill:color(display-p3 0.0941 0.1137 0.1765);fill-opacity:1;"/>
+<ellipse cx="1752.88" cy="249.882" rx="373.764" ry="132.375" transform="rotate(-27.263 1752.88 249.882)" stroke="url(#paint0_linear_2903_89447)" stroke-width="4"/>
+<path d="M371.861 707.868C302.457 717.879 226.522 706.398 152.291 674.672C78.0608 642.945 8.36881 592.183 -49.2253 527.893C-106.819 463.602 -150.117 388.237 -174.421 309.972C-198.725 231.707 -203.108 153.53 -187.095 83.9211" stroke="url(#paint1_linear_2903_89447)" stroke-width="4"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_2903_89447" x1="1769.31" y1="-66.633" x2="1700" y2="409.511" gradientUnits="userSpaceOnUse">
+<stop stop-color="#B7E635" style="stop-color:#B7E635;stop-color:color(display-p3 0.7169 0.9020 0.2078);stop-opacity:1;"/>
+<stop offset="1" stop-color="#B7E635" stop-opacity="0" style="stop-color:none;stop-opacity:0;"/>
+</linearGradient>
+<linearGradient id="paint1_linear_2903_89447" x1="-191.5" y1="437" x2="360.5" y2="707" gradientUnits="userSpaceOnUse">
+<stop stop-color="#B7E635" style="stop-color:#B7E635;stop-color:color(display-p3 0.7169 0.9020 0.2078);stop-opacity:1;"/>
+<stop offset="1" stop-color="#B7E635" stop-opacity="0" style="stop-color:none;stop-opacity:0;"/>
+</linearGradient>
+<clipPath id="clip0_2903_89447">
+<rect width="1440" height="890" fill="white" style="fill:white;fill-opacity:1;"/>
+</clipPath>
+</defs>
+</svg>

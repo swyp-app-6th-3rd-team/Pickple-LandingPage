@@ -1,9 +1,9 @@
 import SiteFooter from './components/SiteFooter'
 import SiteHeader from './components/SiteHeader'
 import IntroSection from './components/IntroSection'
+import IntroDecisionSection from './components/IntroDecisionSection'
 import StorySection from './components/StorySection'
 import SignupSection from './components/SignupSection'
-import VisualSection from './components/VisualSection'
 import './App.css'
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
     <main className="page-shell">
       <SiteHeader />
       <IntroSection />
-      <VisualSection />
+      <IntroDecisionSection />
       <StorySection />
       <SignupSection />
       <SiteFooter />
