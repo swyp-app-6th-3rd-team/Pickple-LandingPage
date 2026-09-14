@@ -2,112 +2,180 @@ import mainmock from '../assets/main-mockup.svg'
 import arrow from '../assets/arrow.svg'
 import backgroundImage from '../assets/bg.svg'
 
-const styles = {
-  section: {
-    position: 'relative',
-    overflow: 'hidden',
-    color: '#f3f5f8',
-    padding: '0px 80px 54px',
-  } as const,
-  backgroundLayer: {
-    position: 'absolute',
-    inset: 0,
-    width: '100%',
-    height: '100%',
-    objectFit: 'cover',
-    zIndex: 0,
-  } as const,
-  heroInner: {
-    position: 'relative',
-    zIndex: 1,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: '24px',
-    minHeight: '600px',
-    maxWidth: '100%',
-    flexWrap: 'wrap',
-  } as const,
-  heroCopy: {
-    flex: '1 1 320px',
-    minWidth: 0,
-  } as const,
-  eyebrowRow: {
-    marginBottom: '18px',
-  } as const,
-  eyebrowPill: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '999px',
-    background: 'transparent',
-    border: '2.13px solid rgba(212, 255, 94, 0.4)',
-    color: '#ffffff',
-    fontFamily: 'Pretendard, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif',
-    padding: '8px 20px',
-    fontSize: '18px',
-    fontWeight: 600,
-     lineHeight: '135%',
-    letterSpacing: '-2%'
-  } as const,
-  title: {
-    margin: 0,
-    color: '#ffffff',
-    fontFamily: 'Pretendard, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif',
-    fontSize: '64px',
-    fontWeight: 700,
-    lineHeight: '140%',
-    letterSpacing: '-2%'
-  } as const,
-  heroSubcopy: {
-    marginTop: '18px',
-    color: 'rgba(233,236,240,0.8)',
-    fontSize: '1.06rem',
-    lineHeight: 1.7,
-  } as const,
-  visualWrap: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: '1 1 320px',
-    minHeight: '674px',
-    width: '617px',
-    maxWidth: '617px',
-  } as const,
-  visual: {
-    width: '617px',
-    height: '674px',
-    display: 'block',
-    objectFit: 'contain',
-    filter: 'drop-shadow(0 26px 60px rgba(17, 24, 39, 0.45))',
-  } as const,
-} as const
-
 function IntroSection() {
   return (
-    <section style={styles.section} id="top">
-      <img src={backgroundImage} alt="" aria-hidden="true" style={styles.backgroundLayer} />
-      <div style={styles.heroInner}>
-        <div style={styles.heroCopy}>
-          <div style={styles.eyebrowRow}>
-            <span style={styles.eyebrowPill}>사전예약 오픈</span>
+    <>
+      <style>{`
+        .intro-section {
+          position: relative;
+          overflow: hidden;
+          color: #f3f5f8;
+          padding: 0 80px 54px;
+          box-sizing: border-box;
+        }
+        .intro-bg {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          z-index: 0;
+        }
+        .hero-inner {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 24px;
+          min-height: 600px;
+          max-width: 100%;
+        }
+        .hero-copy {
+          flex: 1 1 320px;
+          min-width: 0;
+        }
+        .eyebrow-pill {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 999px;
+          border: 2.13px solid rgba(212, 255, 94, 0.4);
+          color: #ffffff;
+          font-family: Pretendard, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+          padding: 8px 20px;
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 135%;
+          letter-spacing: -0.02em;
+          margin-bottom: 18px;
+        }
+        .hero-title {
+          margin: 0;
+          color: #ffffff;
+          font-family: Pretendard, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+          font-size: 64px;
+          font-weight: 700;
+          line-height: 140%;
+          letter-spacing: -0.02em;
+        }
+        .hero-visual-wrap {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex: 1 1 320px;
+          width: 617px;
+          max-width: 617px;
+        }
+        .hero-visual {
+          width: 617px;
+          height: auto;
+          display: block;
+          object-fit: contain;
+          filter: drop-shadow(0 26px 60px rgba(17, 24, 39, 0.45));
+        }
+        .arrow-wrap {
+          position: relative;
+          z-index: 1;
+          text-align: center;
+          margin-top: 40px;
+        }
+        .arrow-icon {
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+        }
+
+        /* 1439px ~ 810px */
+        @media screen and (max-width: 1439px) and (min-width: 810px) {
+          .intro-section {
+            padding: 0 40px 60px;
+          }
+          .hero-inner {
+            flex-direction: column;
+            text-align: center;
+            padding-top: 40px;
+            gap: 0px;
+          }
+          .hero-copy {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .hero-title {
+           
+          }
+          .hero-visual-wrap {
+            width: 480px;
+            max-width: 90%;
+          }
+        }
+
+        /* 809px ~ 360px */
+        @media screen and (max-width: 809px) {
+          .intro-section {
+            padding: 0 20px 40px;
+          }
+          .hero-inner {
+            flex-direction: column;
+            text-align: center;
+            padding-top: 30px;
+            justify-content: flex-start;
+            min-height: auto;
+            gap: 48px;
+          }
+          .hero-copy {
+            flex: 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap:0px;
+          }
+          .eyebrow-pill {
+            font-size: 16px;
+            padding: 6px 12px;
+          }
+          .hero-title {
+            font-size: 36px;
+          }
+          .hero-visual-wrap {
+            width: 100%;
+            max-width: 284px;
+          }
+          .arrow-wrap {
+            margin-top: 24px;
+          }
+          .arrow-icon {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      `}</style>
+
+      <section className="intro-section" id="top">
+        <img src={backgroundImage} alt="" aria-hidden="true" className="intro-bg" />
+        <div className="hero-inner">
+          <div className="hero-copy">
+            <div>
+              <span className="eyebrow-pill">사전예약 오픈</span>
+            </div>
+            <h1 className="hero-title">
+              고민 많은 당신을 위한
+              <br />
+              더 가벼운 결정
+            </h1>
           </div>
-          <h1 style={styles.title}>
-            고민 많은 당신을 위한
-            <br />
-            더 가벼운 결정
-          </h1>
+
+          <div className="hero-visual-wrap" aria-label="PickPle 모바일 화면 예시">
+            <img src={mainmock} alt="PickPle 앱 미리보기" className="hero-visual" />
+          </div>
         </div>
 
-        <div style={styles.visualWrap} aria-label="PickPle 모바일 화면 예시">
-          <img src={mainmock} alt="PickPle 앱 미리보기" style={styles.visual} />
+        <div className="arrow-wrap">
+          <img src={arrow} alt="아래로 스크롤" className="arrow-icon" />
         </div>
-      </div>
-
-      <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', marginTop: '40px' }}>
-        <img src={arrow} alt="아래로 스크롤" style={{ display: 'inline-block', width: '24px', height: '24px' }} />
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
 

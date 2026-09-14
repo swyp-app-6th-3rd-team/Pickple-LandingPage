@@ -1,9 +1,3 @@
-.page-shell {
-  width: 100%;
-  max-width: none;
-  margin: 0 auto;
-  background: #f3f3f1;
-  color: #111827;
-  overflow-x: hidden;
+* {
+  box-sizing: border-box;
 }
-
