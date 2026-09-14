@@ -158,7 +158,7 @@ function IntroDecisionSection() {
 
           /* 810px 이상에서만 밴드 섹션을 위로 올림 */
           .band-section {
-            margin-top: -35px;
+            margin-top: -15px;
           }
         }
 
@@ -285,7 +285,7 @@ function IntroDecisionSection() {
           }
 
           .band-section {
-            margin-top: -20px;
+            margin-top: 0px;
           }
           .band-content {
             display: flex;
