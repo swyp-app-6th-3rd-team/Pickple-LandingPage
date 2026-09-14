@@ -92,7 +92,7 @@ function IntroDecisionSection() {
           display: block;
           opacity: 0;
           transform-origin: center bottom;
-          pointer-events: none; /* 내부 문서로 인한 스크롤/터치 먹통 방지 */
+          pointer-events: none;
         }
 
         .decision-item-obj.animate-1 {
@@ -128,6 +128,7 @@ function IntroDecisionSection() {
           .decision-list {
             max-width: 920px;
           }
+          /* 1, 3, 5번은 왼쪽 영역으로 배치 */
           .decision-item-obj.animate-1 {
             align-self: flex-start;
             margin-left: 40px;
@@ -141,6 +142,7 @@ function IntroDecisionSection() {
             margin-left: 120px;
           }
 
+          /* 2, 4번은 오른쪽 영역으로 배치 */
           .decision-item-obj.animate-2 {
             align-self: flex-end;
             margin-right: 30px;
@@ -150,11 +152,13 @@ function IntroDecisionSection() {
             margin-right: 100px;
           }
 
+          /* 아래 점과 캐릭터는 정중앙 유지 */
           .dot-img,
           .ch-img {
             align-self: center;
           }
 
+          /* 810px 이상에서만 밴드 섹션을 위로 올림 */
           .band-section {
             margin-top: -15px;
           }
@@ -224,6 +228,7 @@ function IntroDecisionSection() {
           width: 148px;
           height: auto;
           transform: translateY(calc(-50% + 70px));
+          pointer-events: none;
         }
 
         @media screen and (max-width: 1439px) {
@@ -398,7 +403,12 @@ function IntroDecisionSection() {
                 가장 솔직한 답을 드립니다
               </span>
             </div>
-            <img src={ch2} alt="" className="band-character" />
+            <object
+              type="image/svg+xml"
+              data={ch2}
+              aria-label="PickPle 캐릭터"
+              className="band-character"
+            />
           </div>
         </div>
       </section>
