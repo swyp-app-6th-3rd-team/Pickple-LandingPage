@@ -79,6 +79,7 @@ function IntroDecisionSection() {
           flex-direction: column;
           align-items: center;
           gap: 16px;
+          width: 100%;
           max-width: 680px;
           margin: 0 auto;
         }
@@ -118,6 +119,47 @@ function IntroDecisionSection() {
           height: 164px;
           display: block;
           margin-top: 0px;
+        }
+
+        /* 810px 이상: 좌우 분산 배치 및 밴드 섹션 위로 당기기 */
+        @media screen and (min-width: 810px) {
+          .decision-list {
+            max-width: 920px;
+          }
+          /* 1, 3, 5번은 왼쪽 영역으로 배치 */
+          .decision-item-img.animate-1 {
+            align-self: flex-start;
+            margin-left: 40px;
+          }
+          .decision-item-img.animate-3 {
+            align-self: flex-start;
+            margin-left: 60px;
+          }
+          .decision-item-img.animate-5 {
+            align-self: flex-start;
+            margin-left: 120px;
+          }
+
+          /* 2, 4번은 오른쪽 영역으로 배치 */
+          .decision-item-img.animate-2 {
+            align-self: flex-end;
+            margin-right: 30px;
+          }
+          .decision-item-img.animate-4 {
+            align-self: flex-end;
+            margin-right: 100px;
+          }
+
+          /* 아래 점과 캐릭터는 정중앙 유지 */
+          .dot-img,
+          .ch-img {
+            align-self: center;
+          }
+
+          /* 810px 이상에서만 밴드 섹션을 위로 올림 */
+          .band-section {
+            margin-top: -35px;
+          }
         }
 
         .band-section {
@@ -198,9 +240,6 @@ function IntroDecisionSection() {
             font-size: 38px;
             padding: 0 20px;
           }
-          .decision-list {
-            max-width: 680px;
-          }
           .band-star {
             position: absolute;
             left: -90px;
@@ -242,11 +281,11 @@ function IntroDecisionSection() {
           .ch-img {
             max-width: 75px;
             height: auto;
-            margin-top: -50px;
+            margin-top: 0px;
           }
 
           .band-section {
-            margin-top: -24px;
+            margin-top: -15px;
           }
           .band-content {
             display: flex;
