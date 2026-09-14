@@ -6,7 +6,6 @@ function SiteHeader() {
   const handleScrollToSignup = () => {
     const signupElement = document.getElementById('signup')
     if (signupElement) {
-      // 1. 전체 화면 기준 정확한 Y 좌표 계산 후 스크롤
       const elementPosition = signupElement.getBoundingClientRect().top
       const offsetPosition = elementPosition + window.pageYOffset
 
@@ -15,7 +14,6 @@ function SiteHeader() {
         behavior: 'smooth'
       })
 
-      // 2. 이메일 입력창으로 바로 포커스 이동 (사용자 편의)
       setTimeout(() => {
         const emailInput = document.getElementById('email')
         if (emailInput) {
@@ -34,16 +32,21 @@ function SiteHeader() {
           align-items: center;
           justify-content: space-between;
           padding: 34.5px 80px;
-          overflow: hidden;
           box-sizing: border-box;
+          /* 모바일 하단 서브픽셀 틈새 렌더링 방지 */
+          margin-bottom: -1px;
         }
         .header-bg {
           position: absolute;
-          inset: 0;
+          top: 0;
+          left: 0;
           width: 100%;
-          height: 100%;
+          /* 1~2px 더 길게 내려서 하단 틈새를 완벽히 덮음 */
+          height: calc(100% + 2px);
           object-fit: cover;
           z-index: 0;
+          pointer-events: none;
+          transform: translateZ(0); /* GPU 가속 및 렌더링 보정 */
         }
         .header-brand {
           position: relative;
