@@ -84,28 +84,30 @@ function IntroDecisionSection() {
           margin: 0 auto;
         }
 
-        .decision-item-img {
+        /* object 태그용 벡터 렌더링 스타일 */
+        .decision-item-obj {
           width: 100%;
           max-width: 680px;
           height: auto;
           display: block;
           opacity: 0;
           transform-origin: center bottom;
+          pointer-events: none; /* 내부 문서로 인한 스크롤/터치 먹통 방지 */
         }
 
-        .decision-item-img.animate-1 {
+        .decision-item-obj.animate-1 {
           animation: balloonPop 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
         }
-        .decision-item-img.animate-2 {
+        .decision-item-obj.animate-2 {
           animation: balloonPop 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.65s forwards;
         }
-        .decision-item-img.animate-3 {
+        .decision-item-obj.animate-3 {
           animation: balloonPop 1.4s cubic-bezier(0.22, 1, 0.36, 1) 1.1s forwards;
         }
-        .decision-item-img.animate-4 {
+        .decision-item-obj.animate-4 {
           animation: balloonPop 1.4s cubic-bezier(0.22, 1, 0.36, 1) 1.55s forwards;
         }
-        .decision-item-img.animate-5 {
+        .decision-item-obj.animate-5 {
           animation: balloonPop 1.4s cubic-bezier(0.22, 1, 0.36, 1) 2.0s forwards;
         }
 
@@ -126,37 +128,33 @@ function IntroDecisionSection() {
           .decision-list {
             max-width: 920px;
           }
-          /* 1, 3, 5번은 왼쪽 영역으로 배치 */
-          .decision-item-img.animate-1 {
+          .decision-item-obj.animate-1 {
             align-self: flex-start;
             margin-left: 40px;
           }
-          .decision-item-img.animate-3 {
+          .decision-item-obj.animate-3 {
             align-self: flex-start;
             margin-left: 60px;
           }
-          .decision-item-img.animate-5 {
+          .decision-item-obj.animate-5 {
             align-self: flex-start;
             margin-left: 120px;
           }
 
-          /* 2, 4번은 오른쪽 영역으로 배치 */
-          .decision-item-img.animate-2 {
+          .decision-item-obj.animate-2 {
             align-self: flex-end;
             margin-right: 30px;
           }
-          .decision-item-img.animate-4 {
+          .decision-item-obj.animate-4 {
             align-self: flex-end;
             margin-right: 100px;
           }
 
-          /* 아래 점과 캐릭터는 정중앙 유지 */
           .dot-img,
           .ch-img {
             align-self: center;
           }
 
-          /* 810px 이상에서만 밴드 섹션을 위로 올림 */
           .band-section {
             margin-top: -15px;
           }
@@ -272,7 +270,7 @@ function IntroDecisionSection() {
             max-width: 100%;
             gap: 12px;
           }
-          .decision-item-img {
+          .decision-item-obj {
             max-width: 320px;
           }
           .dot-img {
@@ -349,11 +347,36 @@ function IntroDecisionSection() {
           해보신 적 있으신가요?
         </h2>
         <div className="decision-list">
-          <img src={ment1} alt="" className={`decision-item-img ${isVisible ? 'animate-1' : ''}`} />
-          <img src={ment2} alt="" className={`decision-item-img ${isVisible ? 'animate-2' : ''}`} />
-          <img src={ment3} alt="" className={`decision-item-img ${isVisible ? 'animate-3' : ''}`} />
-          <img src={ment4} alt="" className={`decision-item-img ${isVisible ? 'animate-4' : ''}`} />
-          <img src={ment5} alt="" className={`decision-item-img ${isVisible ? 'animate-5' : ''}`} />
+          <object
+            type="image/svg+xml"
+            data={ment1}
+            aria-label="고민 멘트 1"
+            className={`decision-item-obj ${isVisible ? 'animate-1' : ''}`}
+          />
+          <object
+            type="image/svg+xml"
+            data={ment2}
+            aria-label="고민 멘트 2"
+            className={`decision-item-obj ${isVisible ? 'animate-2' : ''}`}
+          />
+          <object
+            type="image/svg+xml"
+            data={ment3}
+            aria-label="고민 멘트 3"
+            className={`decision-item-obj ${isVisible ? 'animate-3' : ''}`}
+          />
+          <object
+            type="image/svg+xml"
+            data={ment4}
+            aria-label="고민 멘트 4"
+            className={`decision-item-obj ${isVisible ? 'animate-4' : ''}`}
+          />
+          <object
+            type="image/svg+xml"
+            data={ment5}
+            aria-label="고민 멘트 5"
+            className={`decision-item-obj ${isVisible ? 'animate-5' : ''}`}
+          />
           <img src={dot} alt="" className="dot-img" />
           <img src={ch1} alt="" className="ch-img" />
         </div>
