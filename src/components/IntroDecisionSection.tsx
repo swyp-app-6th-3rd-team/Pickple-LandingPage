@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import ment1 from '../assets/ment-1.svg'
 import ment2 from '../assets/ment-2.svg'
 import ment3 from '../assets/ment-3.svg'
@@ -9,9 +10,45 @@ import star from '../assets/star.svg'
 import ch2 from '../assets/ch-2.svg'
 
 function IntroDecisionSection() {
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement | null>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.15 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <>
       <style>{`
+        @keyframes balloonPop {
+          0% {
+            opacity: 0;
+            transform: translateY(28px) scale(0.92);
+          }
+          70% {
+            opacity: 1;
+            transform: translateY(-2px) scale(1.015);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+
         .decision-section {
           position: relative;
           z-index: 1;
@@ -20,6 +57,7 @@ function IntroDecisionSection() {
           background: #f3f3f1;
           box-sizing: border-box;
         }
+
         .decision-heading {
           margin: 0 0 30px;
           color: #0b1118;
@@ -30,7 +68,6 @@ function IntroDecisionSection() {
           font-weight: 700;
         }
 
-        /* 1440px 이상 기본 데스크탑에서는 줄바꿈 숨김 */
         .mobile-break,
         .band-break,
         .sub-break {
@@ -45,12 +82,32 @@ function IntroDecisionSection() {
           max-width: 680px;
           margin: 0 auto;
         }
+
         .decision-item-img {
           width: 100%;
           max-width: 680px;
           height: auto;
           display: block;
+          opacity: 0;
+          transform-origin: center bottom;
         }
+
+        .decision-item-img.animate-1 {
+          animation: balloonPop 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+        }
+        .decision-item-img.animate-2 {
+          animation: balloonPop 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.65s forwards;
+        }
+        .decision-item-img.animate-3 {
+          animation: balloonPop 1.4s cubic-bezier(0.22, 1, 0.36, 1) 1.1s forwards;
+        }
+        .decision-item-img.animate-4 {
+          animation: balloonPop 1.4s cubic-bezier(0.22, 1, 0.36, 1) 1.55s forwards;
+        }
+        .decision-item-img.animate-5 {
+          animation: balloonPop 1.4s cubic-bezier(0.22, 1, 0.36, 1) 2.0s forwards;
+        }
+
         .dot-img {
           width: 11px;
           height: 54px;
@@ -129,7 +186,6 @@ function IntroDecisionSection() {
           transform: translateY(calc(-50% + 70px));
         }
 
-        /* 1439px 이하 (태블릿 및 모바일): 제목 및 배너 타이틀 줄바꿈 */
         @media screen and (max-width: 1439px) {
           .mobile-break,
           .band-break {
@@ -137,7 +193,6 @@ function IntroDecisionSection() {
           }
         }
 
-        /* 1439px ~ 810px (태블릿/소형 데스크탑) */
         @media screen and (max-width: 1439px) and (min-width: 810px) {
           .decision-heading {
             font-size: 38px;
@@ -162,9 +217,6 @@ function IntroDecisionSection() {
           }
         }
 
-        /* ========================================================
-           810px 이하 (모바일 피그마 오토레이아웃 스펙 반영)
-           ======================================================== */
         @media screen and (max-width: 809px) {
           .sub-break {
             display: inline;
@@ -193,7 +245,6 @@ function IntroDecisionSection() {
             margin-top: -50px;
           }
 
-          /* 피그마 Auto layout 스펙: W 100%(Fill), H Hug(auto), Padding 180px 24px, Clip content */
           .band-section {
             margin-top: -24px;
           }
@@ -202,22 +253,22 @@ function IntroDecisionSection() {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 180px 24px;  
+            padding: 180px 24px;
             width: 100%;
             min-height: auto;
-            height: auto;          /* Hug */
-            overflow: hidden;      /* Clip content */
+            height: auto;
+            overflow: hidden;
             box-sizing: border-box;
           }
           .band-inner {
             position: relative;
             width: 100%;
-            max-width: 360px;      /* 피그마 W 360 */
+            max-width: 360px;
             min-height: auto;
             margin: 0 auto;
           }
           .band-text-wrap {
-            position: static;      /* 절대 위치 해제 후 오토레이아웃 흐름 적용 */
+            position: static;
             transform: none;
             width: 100%;
             max-width: 100%;
@@ -225,7 +276,7 @@ function IntroDecisionSection() {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 12px;             
+            gap: 12px;
             text-align: center;
           }
           .band-title {
@@ -252,18 +303,18 @@ function IntroDecisionSection() {
         }
       `}</style>
 
-      <section className="decision-section">
+      <section className="decision-section" ref={sectionRef}>
         <h2 className="decision-heading">
           이런 생각, 한번쯤
           <br className="mobile-break" />
           해보신 적 있으신가요?
         </h2>
         <div className="decision-list">
-          <img src={ment1} alt="" className="decision-item-img" />
-          <img src={ment2} alt="" className="decision-item-img" />
-          <img src={ment3} alt="" className="decision-item-img" />
-          <img src={ment4} alt="" className="decision-item-img" />
-          <img src={ment5} alt="" className="decision-item-img" />
+          <img src={ment1} alt="" className={`decision-item-img ${isVisible ? 'animate-1' : ''}`} />
+          <img src={ment2} alt="" className={`decision-item-img ${isVisible ? 'animate-2' : ''}`} />
+          <img src={ment3} alt="" className={`decision-item-img ${isVisible ? 'animate-3' : ''}`} />
+          <img src={ment4} alt="" className={`decision-item-img ${isVisible ? 'animate-4' : ''}`} />
+          <img src={ment5} alt="" className={`decision-item-img ${isVisible ? 'animate-5' : ''}`} />
           <img src={dot} alt="" className="dot-img" />
           <img src={ch1} alt="" className="ch-img" />
         </div>

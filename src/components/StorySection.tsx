@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import voteMockup from '../assets/vote-mockup.svg'
 import communityMockup from '../assets/community-mockup.svg'
 import badgeMockup from '../assets/badge-mockup.svg'
@@ -6,9 +7,70 @@ import illustration2 from '../assets/illustration-2.svg'
 import illustration3 from '../assets/illustration-3.svg'
 
 function StorySection() {
+  const containerRef = useRef<HTMLElement | null>(null)
+
+  useEffect(() => {
+    const targets = containerRef.current?.querySelectorAll('.scroll-reveal')
+    if (!targets || targets.length === 0) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      {
+        threshold: 0.05,
+        rootMargin: '0px 0px -40px 0px',
+      }
+    )
+
+    targets.forEach((el) => observer.observe(el))
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <>
       <style>{`
+        @keyframes storyFadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(32px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .scroll-reveal {
+          opacity: 1;
+        }
+
+        .scroll-reveal .visual-box,
+        .scroll-reveal .feature-copy {
+          opacity: 0;
+          transform: translateY(32px);
+          transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+          will-change: opacity, transform;
+        }
+
+        .scroll-reveal.in-view .visual-box,
+        .scroll-reveal.in-view .feature-copy {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .story-row-vote.in-view .feature-copy,
+        .story-row-badge.in-view .feature-copy,
+        .story-row-rev.in-view .visual-box {
+          transition-delay: 0.2s;
+        }
+
         .story-rows {
           padding: 227px clamp(20px, 5vw, 240px) 80px;
           background: #ffffff;
@@ -116,7 +178,6 @@ function StorySection() {
           color: #6D6D6D;
         }
 
-        /* 기본 줄바꿈 설정 (1440px 이상 기본값) */
         .vote-break {
           display: inline;
         }
@@ -130,11 +191,7 @@ function StorySection() {
           display: none;
         }
 
-        /* ========================================================
-           1439px ~ 810px (태블릿/소형 데스크탑)
-           ======================================================== */
         @media screen and (max-width: 1439px) and (min-width: 810px) {
-          /* [핵심] 빠른 투표 본문 줄바꿈 해제 -> 한 줄로 표시 */
           .vote-text-break {
             display: none;
           }
@@ -212,14 +269,10 @@ function StorySection() {
           }
         }
 
-        /* ========================================================
-           809px ~ 360px (모바일)
-           ======================================================== */
         @media screen and (max-width: 809px) {
           .vote-break {
             display: inline;
           }
-          /* 모바일에서는 다시 두 줄로 줄바꿈 */
           .vote-text-break {
             display: inline;
           }
@@ -297,9 +350,8 @@ function StorySection() {
         }
       `}</style>
 
-      <section className="story-rows">
-        {/* 1. 빠른 투표 */}
-        <div className="story-row-vote">
+      <section className="story-rows" ref={containerRef}>
+        <div className="story-row-vote scroll-reveal">
           <div className="visual-box">
             <img src={voteMockup} alt="투표 화면 미리보기" className="story-mockup" />
           </div>
@@ -318,8 +370,7 @@ function StorySection() {
           </div>
         </div>
 
-        {/* 2. 커뮤니티 */}
-        <div className="story-row-rev">
+        <div className="story-row-rev scroll-reveal">
           <div className="feature-copy">
             <span className="feature-badge">커뮤니티</span>
             <h3 className="feature-title">
@@ -355,8 +406,7 @@ function StorySection() {
           </div>
         </div>
 
-        {/* 3. 뱃지 · 등급 */}
-        <div className="story-row-badge">
+        <div className="story-row-badge scroll-reveal">
           <div className="visual-box">
             <img src={badgeMockup} alt="뱃지 화면 미리보기" className="story-mockup" />
           </div>

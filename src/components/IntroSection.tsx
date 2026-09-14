@@ -6,6 +6,26 @@ function IntroSection() {
   return (
     <>
       <style>{`
+        @keyframes heroFadeUp {
+          from {
+            opacity: 0;
+            transform: translateY(32px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes bounceArrow {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(8px);
+          }
+        }
+
         .intro-section {
           position: relative;
           overflow: hidden;
@@ -58,6 +78,8 @@ function IntroSection() {
           font-weight: 700;
           line-height: 140%;
           letter-spacing: -0.02em;
+          opacity: 0;
+          animation: heroFadeUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
         }
         .hero-visual-wrap {
           display: flex;
@@ -66,6 +88,8 @@ function IntroSection() {
           flex: 1 1 320px;
           width: 617px;
           max-width: 617px;
+          opacity: 0;
+          animation: heroFadeUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
         }
         .hero-visual {
           width: 617px;
@@ -79,14 +103,16 @@ function IntroSection() {
           z-index: 1;
           text-align: center;
           margin-top: 40px;
+          opacity: 0;
+          animation: heroFadeUp 1.2s ease-out 1.2s forwards;
         }
         .arrow-icon {
           display: inline-block;
           width: 24px;
           height: 24px;
+          animation: bounceArrow 2.2s ease-in-out infinite 2s;
         }
 
-        /* 1439px ~ 810px */
         @media screen and (max-width: 1439px) and (min-width: 810px) {
           .intro-section {
             padding: 0 40px 60px;
@@ -102,16 +128,12 @@ function IntroSection() {
             flex-direction: column;
             align-items: center;
           }
-          .hero-title {
-           
-          }
           .hero-visual-wrap {
             width: 480px;
             max-width: 90%;
           }
         }
 
-        /* 809px ~ 360px */
         @media screen and (max-width: 809px) {
           .intro-section {
             padding: 0 20px 40px;
@@ -129,7 +151,7 @@ function IntroSection() {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap:0px;
+            gap: 0px;
           }
           .eyebrow-pill {
             font-size: 16px;

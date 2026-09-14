@@ -1,15 +1,47 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
+import { supabase } from '../supabaseClient'
 import checkboxEmpty from '../assets/checkbox-empty.svg'
 import checkboxFill from '../assets/checkbox-fill.svg'
 
 function SignupSection() {
-  const [submitted, setSubmitted] = useState(false)
+  const [email, setEmail] = useState('')
   const [isChecked, setIsChecked] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    setSubmitted(true)
+    
+    if (!isChecked) {
+      setErrorMsg('개인정보 수집에 동의해주세요')
+      return
+    }
+
+    setIsLoading(true)
+    setErrorMsg('')
+
+    try {
+      const { error } = await supabase
+        .from('landingpage-email')
+        .insert([{ email: email.trim() }])
+
+      if (error) {
+        if (error.code === '23505') {
+          setErrorMsg('이미 신청 완료된 이메일입니다.')
+        } else {
+          setErrorMsg('등록 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.')
+        }
+      } else {
+        setSubmitted(true)
+        setEmail('')
+      }
+    } catch {
+      setErrorMsg('네트워크 오류가 발생했습니다.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -68,6 +100,8 @@ function SignupSection() {
           height: 56px;
           border: 1px solid #E7E8E9;
           border-radius: 6px;
+          -webkit-appearance: none;
+          outline: none;
           padding: 15px 20px;
           background: #fff;
           color: #111111;
@@ -114,15 +148,25 @@ function SignupSection() {
           font-size: 16px;
           font-weight: 600;
           cursor: pointer;
+          transition: opacity 0.2s;
+        }
+        .signup-submit-btn:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
         }
         .signup-success {
-          margin: 0;
+          margin: 10px 0 0;
           color: #aaf26d;
-          font-size: 0.9rem;
+          font-size: 0.95rem;
+          text-align: center;
+        }
+        .signup-error {
+          margin: 10px 0 0;
+          color: #ff6b6b;
+          font-size: 0.95rem;
           text-align: center;
         }
 
-        /* 809px ~ 360px */
         @media screen and (max-width: 809px) {
           .signup-section {
             padding: 60px 20px 48px;
@@ -157,17 +201,22 @@ function SignupSection() {
             id="email" 
             name="email" 
             type="email" 
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="officialpickple@gmail.com" 
             required 
+            disabled={isLoading}
             className="signup-input" 
           />
           
           <label className="signup-consent">
             <input 
               type="checkbox" 
-              required 
               checked={isChecked} 
-              onChange={(e) => setIsChecked(e.target.checked)} 
+              onChange={(e) => {
+                setIsChecked(e.target.checked)
+                if (e.target.checked) setErrorMsg('')
+              }} 
               className="hidden-checkbox" 
             />
             <img 
@@ -178,11 +227,16 @@ function SignupSection() {
             <span>[필수] 개인정보 수집 및 이용 동의</span>
           </label>
 
-          <button type="submit" className="signup-submit-btn">
-            가장 먼저 알림 받기
+          <button 
+            type="submit" 
+            className="signup-submit-btn"
+            disabled={isLoading}
+          >
+            {isLoading ? '신청 중' : '가장 먼저 알림 받기'}
           </button>
 
-          {submitted && <p className="signup-success" role="status">신청이 완료되었습니다.</p>}
+          {submitted && <p className="signup-success" role="status">신청이 완료되었습니다!</p>}
+          {errorMsg && <p className="signup-error" role="alert">{errorMsg}</p>}
         </form>
       </section>
     </>

@@ -3,6 +3,28 @@ import alarmIcon from '../assets/alarm.svg'
 import backgroundImage from '../assets/bg.svg'
 
 function SiteHeader() {
+  const handleScrollToSignup = () => {
+    const signupElement = document.getElementById('signup')
+    if (signupElement) {
+      // 1. 전체 화면 기준 정확한 Y 좌표 계산 후 스크롤
+      const elementPosition = signupElement.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
+
+      // 2. 이메일 입력창으로 바로 포커스 이동 (사용자 편의)
+      setTimeout(() => {
+        const emailInput = document.getElementById('email')
+        if (emailInput) {
+          emailInput.focus()
+        }
+      }, 500)
+    }
+  }
+
   return (
     <>
       <style>{`
@@ -94,7 +116,12 @@ function SiteHeader() {
           <img src={mainLogo} alt="PickPle 로고" className="header-logo" />
         </div>
         <div className="header-actions">
-          <button type="button" className="alarm-button" aria-label="출시 알림 받기">
+          <button 
+            type="button" 
+            className="alarm-button" 
+            aria-label="출시 알림 받기"
+            onClick={handleScrollToSignup}
+          >
             <img src={alarmIcon} alt="" className="alarm-icon" />
             <span>출시 알림</span>
           </button>
