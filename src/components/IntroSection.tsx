@@ -234,15 +234,16 @@ function IntroSection() {
               >
                 <img src={androidBtn} alt="Google Play 다운로드" />
               </a> */}
-              <a
-                href={APP_STORE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="download-btn"
-                aria-label="App Store에서 다운로드"
-              >
-                <img src={iosBtn} alt="App Store 다운로드" />
-              </a>
+             <a
+              href={APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="download-btn"
+              aria-label="App Store에서 다운로드"
+              data-track="ios_download" // 추적용 속성
+            >
+              <img src={iosBtn} alt="App Store 다운로드" />
+            </a>
             </div>
           </div>
 
