@@ -1,27 +1,27 @@
 import mainLogo from '../assets/main-logo.svg'
-import alarmIcon from '../assets/alarm.svg'
+// import alarmIcon from '../assets/alarm.svg'
 import backgroundImage from '../assets/bg.svg'
 
 function SiteHeader() {
-  const handleScrollToSignup = () => {
-    const signupElement = document.getElementById('signup')
-    if (signupElement) {
-      const elementPosition = signupElement.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset
+  // const handleScrollToSignup = () => {
+  //   const signupElement = document.getElementById('signup')
+  //   if (signupElement) {
+  //     const elementPosition = signupElement.getBoundingClientRect().top
+  //     const offsetPosition = elementPosition + window.pageYOffset
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
+  //     window.scrollTo({
+  //       top: offsetPosition,
+  //       behavior: 'smooth'
+  //     })
 
-      setTimeout(() => {
-        const emailInput = document.getElementById('email')
-        if (emailInput) {
-          emailInput.focus()
-        }
-      }, 500)
-    }
-  }
+  //     setTimeout(() => {
+  //       const emailInput = document.getElementById('email')
+  //       if (emailInput) {
+  //         emailInput.focus()
+  //       }
+  //     }, 500)
+  //   }
+  // }
 
   return (
     <>

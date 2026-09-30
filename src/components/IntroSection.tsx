@@ -1,11 +1,11 @@
 import mainmock from '../assets/main-mockup.svg'
 import arrow from '../assets/arrow.svg'
 import backgroundImage from '../assets/bg.svg'
-import androidBtn from '../assets/android.svg' // 파일 확장자(.png 등)에 맞게 확인해주세요
+// import androidBtn from '../assets/android.svg'
 import iosBtn from '../assets/ios.svg'
 
 function IntroSection() {
-  const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=YOUR_APP_ID'
+  // const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=YOUR_APP_ID'
   const APP_STORE_URL = 'https://apps.apple.com/kr/app/pickple-buy-or-bye/id6810589501'
 
   return (
