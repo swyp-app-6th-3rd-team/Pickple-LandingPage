@@ -13,7 +13,7 @@ function App() {
       <IntroSection />
       <IntroDecisionSection />
       <StorySection />
-      <SignupSection />
+      {/* <SignupSection /> */}
       <SiteFooter />
     </main>
   )

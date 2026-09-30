@@ -1,8 +1,13 @@
 import mainmock from '../assets/main-mockup.svg'
 import arrow from '../assets/arrow.svg'
 import backgroundImage from '../assets/bg.svg'
+import androidBtn from '../assets/android.svg' // 파일 확장자(.png 등)에 맞게 확인해주세요
+import iosBtn from '../assets/ios.svg'
 
 function IntroSection() {
+  const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=YOUR_APP_ID'
+  const APP_STORE_URL = 'https://apps.apple.com/kr/app/pickple-buy-or-bye/id6810589501'
+
   return (
     <>
       <style>{`
@@ -71,7 +76,7 @@ function IntroSection() {
           margin-bottom: 18px;
         }
         .hero-title {
-          margin: 0;
+          margin: 0 0 32px 0;
           color: #ffffff;
           font-family: Pretendard, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
           font-size: 64px;
@@ -81,6 +86,30 @@ function IntroSection() {
           opacity: 0;
           animation: heroFadeUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
         }
+        
+        /* 앱 다운로드 버튼 영역 */
+        .download-btn-wrap {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          opacity: 0;
+          animation: heroFadeUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+        }
+        .download-btn {
+          display: inline-block;
+          cursor: pointer;
+          transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+        .download-btn:hover {
+          transform: translateY(-2px);
+          opacity: 0.9;
+        }
+        .download-btn img {
+          height: 52px;
+          width: auto;
+          display: block;
+        }
+
         .hero-visual-wrap {
           display: flex;
           justify-content: center;
@@ -121,7 +150,7 @@ function IntroSection() {
             flex-direction: column;
             text-align: center;
             padding-top: 40px;
-            gap: 0px;
+            gap: 32px;
           }
           .hero-copy {
             display: flex;
@@ -144,7 +173,7 @@ function IntroSection() {
             padding-top: 30px;
             justify-content: flex-start;
             min-height: auto;
-            gap: 48px;
+            gap: 40px;
           }
           .hero-copy {
             flex: 0 0 auto;
@@ -159,6 +188,13 @@ function IntroSection() {
           }
           .hero-title {
             font-size: 36px;
+            margin-bottom: 24px;
+          }
+          .download-btn-wrap {
+            justify-content: center;
+          }
+          .download-btn img {
+            height: 44px;
           }
           .hero-visual-wrap {
             width: 100%;
@@ -178,14 +214,36 @@ function IntroSection() {
         <img src={backgroundImage} alt="" aria-hidden="true" className="intro-bg" />
         <div className="hero-inner">
           <div className="hero-copy">
-            <div>
+            {/* <div>
               <span className="eyebrow-pill">사전예약 오픈</span>
-            </div>
+            </div> */}
             <h1 className="hero-title">
               고민 많은 당신을 위한
               <br />
-              더 가벼운 결정
+              더 가벼워진 결정
             </h1>
+            
+            {/* 앱 다운로드 링크 영역 */}
+            <div className="download-btn-wrap">
+              {/* <a
+                href={GOOGLE_PLAY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="download-btn"
+                aria-label="Google Play Store에서 다운로드"
+              >
+                <img src={androidBtn} alt="Google Play 다운로드" />
+              </a> */}
+              <a
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="download-btn"
+                aria-label="App Store에서 다운로드"
+              >
+                <img src={iosBtn} alt="App Store 다운로드" />
+              </a>
+            </div>
           </div>
 
           <div className="hero-visual-wrap" aria-label="PickPle 모바일 화면 예시">

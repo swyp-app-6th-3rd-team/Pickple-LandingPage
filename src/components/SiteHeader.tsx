@@ -118,7 +118,7 @@ function SiteHeader() {
         <div className="header-brand" aria-label="PickPle 홈">
           <img src={mainLogo} alt="PickPle 로고" className="header-logo" />
         </div>
-        <div className="header-actions">
+        {/* <div className="header-actions">
           <button 
             type="button" 
             className="alarm-button" 
@@ -128,7 +128,7 @@ function SiteHeader() {
             <img src={alarmIcon} alt="" className="alarm-icon" />
             <span>출시 알림</span>
           </button>
-        </div>
+        </div> */}
       </header>
     </>
   )
