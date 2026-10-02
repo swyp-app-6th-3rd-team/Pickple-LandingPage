@@ -1,11 +1,11 @@
 import mainmock from '../assets/main-mockup.svg'
 import arrow from '../assets/arrow.svg'
 import backgroundImage from '../assets/bg.svg'
-// import androidBtn from '../assets/android.svg'
+import androidBtn from '../assets/android.svg'
 import iosBtn from '../assets/ios.svg'
 
 function IntroSection() {
-  // const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=YOUR_APP_ID'
+  const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.swyp.pickple'
   const APP_STORE_URL = 'https://apps.apple.com/kr/app/pickple-buy-or-bye/id6810589501'
 
   return (
@@ -225,7 +225,7 @@ function IntroSection() {
             
             {/* 앱 다운로드 링크 영역 */}
             <div className="download-btn-wrap">
-              {/* <a
+             <a
                 href={GOOGLE_PLAY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -233,7 +233,7 @@ function IntroSection() {
                 aria-label="Google Play Store에서 다운로드"
               >
                 <img src={androidBtn} alt="Google Play 다운로드" />
-              </a> */}
+              </a> 
              <a
               href={APP_STORE_URL}
               target="_blank"
